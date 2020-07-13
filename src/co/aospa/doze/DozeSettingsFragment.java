@@ -131,6 +131,10 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
 
         mHandler.post(() -> DozeUtils.checkDozeService(getActivity()));
 
+        if (DozeUtils.GESTURE_RAISE_TO_WAKE_KEY.equals(preference.getKey())) {
+            DozeUtils.setPickUp(getActivity(), (Boolean) newValue);
+        }
+
         return true;
     }
 

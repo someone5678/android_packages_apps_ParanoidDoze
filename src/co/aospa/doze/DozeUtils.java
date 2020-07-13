@@ -21,6 +21,7 @@ package co.aospa.doze;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
 import android.hardware.display.AmbientDisplayConfiguration;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
@@ -123,6 +124,12 @@ public final class DozeUtils {
 
     protected static boolean isPickUpEnabled(Context context) {
         return isGestureEnabled(context, GESTURE_PICK_UP_KEY);
+    }
+
+    protected static void setPickUp(Context context, boolean value) {
+        SharedPreferences.Editor e = PreferenceManager.getDefaultSharedPreferences(context).edit();
+        e.putBoolean(GESTURE_PICK_UP_KEY, value);
+        e.commit();
     }
 
     protected static boolean isRaiseToWakeEnabled(Context context) {
